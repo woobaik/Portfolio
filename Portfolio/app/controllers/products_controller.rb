@@ -18,9 +18,27 @@ class ProductsController < ApplicationController
       end
     end
   end
-end
+
+
+  def edit
+    @product_item = Product.find(params[:id])
+  end
+
+  def update
+    @product_item = Product.find(params[:id])
+    respond_to do |format|
+      if @product_item.update(take_params)
+        format.html { redirect_to products_path, notice: "The record is successfully updated."}
+      else
+        format.html {render :edit}
+      end
+    end
+  end
 
 private
-def take_params
+
+  def take_params
   params.require(:product).permit(:title, :subtitle, :body)
+  end
+
 end
