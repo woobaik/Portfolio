@@ -3,9 +3,9 @@
 <%= link_to "CREATE A NEW ITEM", new_product_path %>
 
 <% @products_items.each do |product_item| %>
-  <p><%= product_item.title%></p>
+  <p><%= link_to product_item.title, product_path(product_item)%></p>
   <p><%= product_item.subtitle%></p>
   <p><%= product_item.body%></p>
   <%= image_tag product_item.thumb_image unless product_item.thumb_image.nil?%>
-  <%= link_to "Edit", edit_product_path(product_item.id) %>
+  <%= link_to "Edit", edit_product_path(product_item) %>
 <% end %>
