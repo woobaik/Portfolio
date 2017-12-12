@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :products, except: [:show]
   get 'product/:id', to: 'products#show', as: 'product/show'
+  get 'angular-items', to: 'products#angular'
+
 
 
   get 'about', to: 'pages#about'

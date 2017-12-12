@@ -3,6 +3,10 @@ class ProductsController < ApplicationController
     @products_items = Product.all
   end
 
+  def angular
+    @angular_products_items = Product.angular
+  end
+
   def new
     @product_item = Product.new
   end
