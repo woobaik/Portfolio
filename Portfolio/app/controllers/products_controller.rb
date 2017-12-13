@@ -9,10 +9,12 @@ class ProductsController < ApplicationController
 
   def new
     @product_item = Product.new
+    3.times {@product_item.technologies.build }
   end
 
   def create
-    @product_item = Product.new(take_params)
+    @product_item = Product.new(params.require(:product).permit(:title, :subtitle, :body,
+      technologies_attributes: [:name]))
 
     respond_to do |format|
       if @product_item.save
