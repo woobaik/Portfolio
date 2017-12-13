@@ -90,3 +90,12 @@ puts "8 Ruby products created"
   )
 end
 puts "1 Angular products created"
+
+3.times do |technology|
+  Technology.create!(
+    name: "Technology #{technology}",
+    product_id: Product.last.id
+  )
+end
+
+puts "3 technologies has created!"
