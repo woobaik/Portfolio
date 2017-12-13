@@ -5,3 +5,8 @@
 <em><%= @product_item.subtitle %></em>
 
 <p><%= @product_item.body %> </p>
+
+<h2> Technologies Used </h2>
+<% @product_item.technologies.each do |t| %>
+<li><%=t.name%></li>
+<% end %>
