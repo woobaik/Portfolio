@@ -13,8 +13,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product_item = Product.new(params.require(:product).permit(:title, :subtitle, :body,
-      technologies_attributes: [:name]))
+    @product_item = Product.new(take_params)
 
     respond_to do |format|
       if @product_item.save
@@ -61,7 +60,11 @@ class ProductsController < ApplicationController
 private
 
   def take_params
-  params.require(:product).permit(:title, :subtitle, :body)
+    params.require(:product).permit(:title,
+                                    :subtitle,
+                                    :body,
+                                    technologies_attributes: [:name]
+                                    )
   end
 
 end
